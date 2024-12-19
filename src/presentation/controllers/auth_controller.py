@@ -1,19 +1,21 @@
 from litestar import Controller, post # type: ignore
 
-from application.usecases.login_user_usecase import LoginUserUsecase
-from presentation.schemas.auth_schemas import AuthResponseSchema
-from presentation.schemas.user_schemas import UserLoginSchema
+from application.providers import hash_provider
+from application.usecases.login_user_usecase import LoginUserUsecase # type: ignore
+from domain import repositories
+from presentation.schemas.auth_schemas import AuthResponseSchema # type: ignore
+from presentation.schemas.user_schemas import UserLoginSchema # type: ignore
 
 
 class AuthController(Controller):
     dependencies = {}
     
-    @post("/login", dependencies=)
+    @post("/login")
     async def login(self, data: UserLoginSchema) -> AuthResponseSchema:
-        usecase = LoginUserUsecase(repository, hash_provider)
+        usecase = LoginUserUsecase(repositories, hash_provider)
 
         return AuthResponseSchema(auth_token="", refresh_token="")
 
-    @post("/register")
+    @post("/registro")
     async def register(self, data) -> None:
         return {}

@@ -1,6 +1,6 @@
-from litestar import Litestar
-from litestar.openapi import OpenAPIConfig
-from litestar.openapi.plugins import SwaggerRenderPlugin, YamlRenderPlugin
+from litestar import Litestar # type: ignore
+from litestar.openapi import OpenAPIConfig # type: ignore
+from litestar.openapi.plugins import SwaggerRenderPlugin, YamlRenderPlugin # type: ignore
 
 from presentation.routes.auth_route import auth_route
 
@@ -9,7 +9,7 @@ app = Litestar(
     on_startup=[],
     on_shutdown=[],
     openapi_config=OpenAPIConfig(
-        title="HiddenFriendAPI",
+        title="AmigoSecretoAPI",
         version="1.0.0",
         root_schema_site="swagger",
         render_plugins=[
